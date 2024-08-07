@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+    <title>Document</title>
+</head>
+<body>
+     <%- include('./partials/nav') %>
+     <div class="container mt-2" >
+      <% if (locals.event) { %>
+        <h1><%= event.name %></h1>
+        <h3> Location :  <%= event.location %> </h3>
+        <p> <%= event.description %> </p>
+        <button class="btn btn-primary"><a href="/api/event/delete/<%= event.id %>" style="color:#fff;text-decoration: none;">Delete</a></button>
+        <button class="btn btn-primary"><a href="/api/event/update/<%= event.id %>" style="color:#fff; text-decoration: none;">Update</a></button>
+        <button class="btn btn-primary"><a href="/api/event/weather/condition/<%= event.location %>" style="color:#fff; text-decoration: none;">Check weather condtion</a></button>
+      <% } %>
+       <div class="container mt-2">
+        <% if (locals.weather) { %>
+            <h1>Weather Condition : <%= weather  %></h1>
+            <% } %>
+       </div>
+    </div>
+       <div class="container mt-2">
+    <%- include('./partials/script') %>
+    </div>
+</body>
+</html>
